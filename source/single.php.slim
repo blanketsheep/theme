@@ -1,0 +1,12 @@
+---
+layout: default
+---
+div#single
+  main.container
+    <?php while( have_posts() ): the_post(); ?>
+      = partial 'partials/wp/template_part/content_single'
+      = partial 'partials/wp/post_nav'
+      <?php if( comments_open() || '0' != get_comments_number() ): ?>
+        = partial 'partials/wp/comments_template'
+      <?php endif; ?>
+    <?php endwhile; ?>

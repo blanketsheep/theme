@@ -1,0 +1,13 @@
+---
+layout: default
+---
+div#index
+  main.container
+    <?php if( have_posts() ): ?>
+      <?php while( have_posts() ): the_post(); ?>
+        = partial 'partials/wp/template_part/content_post_format'
+      <?php endwhile; ?>
+      = partial 'partials/wp/paging_nav'
+    <?php else: ?>
+      = partial 'partials/wp/template_part/content_none'
+    <?php endif; ?>

@@ -1,0 +1,10 @@
+section
+  header
+    = "KIJI IS NOT FOUND"
+  div
+    <?php if( current_user_can('publish_posts') ): ?>
+      div= "publisher: KAKOU KIJI"
+    <?php else: ?>
+      div= "user: SAGASOU KIJI"
+      <?php get_search_form(); ?>
+    <?php endif; ?>

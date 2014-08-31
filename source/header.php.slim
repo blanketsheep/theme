@@ -1,0 +1,14 @@
+doctype html
+<html <?php language_attributes(); ?>>
+  head
+    meta charset=data.bloginfo.charset
+    meta name="viewport" content="width=device-width, initial-scale=1"
+    title
+      == data.wp.title
+    /link rel="profile" href="http://gmpg.org/xfn/11"
+    link rel="pingback" href=data.bloginfo.pingback
+    
+    = partial 'partials/wp/wp_head'
+  <body <?php body_class(); ?>>
+    <div id="wrapper">
+      <div id="main">

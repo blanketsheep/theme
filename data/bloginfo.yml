@@ -1,0 +1,2 @@
+charset: "<?php bloginfo( 'charset' ); ?>"
+pingback: "<?php bloginfo( 'pingback_url' ); ?>"

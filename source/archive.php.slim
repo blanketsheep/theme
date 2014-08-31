@@ -1,0 +1,31 @@
+---
+layout: default
+---
+section#archive
+  main.container
+    <?php if( have_posts() ): ?>
+      header
+        h1
+          <?php if( is_category() ): ?>
+            <?php single_cat_title(); ?>
+          <?php else if( is_tag() ): ?>
+            <?php single_tag_title(); ?>
+          <?php else if( is_author() ): ?>
+            <?php get_the_author(); ?>
+          <?php else if( is_day() || is_month() || is_year() ): ?>
+            <?php get_the_date(); ?>
+          <?php else: ?>
+            = "FORMAT OR ARCHIVES DAYO"
+          <?php endif; ?>
+        <?php $term_description = term_description(); ?>
+        <?php if( !empty( $term_description ) ): ?>
+          div
+            <?php printf('%s', $term_description); ?>
+        <?php endif; ?>
+      <?php while( have_posts() ): the_post(); ?>
+        = partial 'partials/wp/template_part/content_post_format'
+      <?php endwhile; ?>
+      = partial 'partials/wp/paging_nav'
+    <?php else: ?>
+      = partial 'partials/wp/template_part/content_none'
+    <?php endif; ?>

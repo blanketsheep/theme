@@ -1,0 +1,21 @@
+<?php if( post_password_required() ): ?>
+<?php return; ?>
+<?php endif; ?>
+div#comments
+  <?php if( have_comments() ): ?>
+    h2
+    ol
+      |
+        <?php
+          wp_list_comments( array(
+            'style'      => 'ol',
+            'short_ping' => true,
+          ) );
+        ?>
+    <?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ): ?>
+      nav
+        <?php previous_comments_link( __( '&larr; Older Comments', '_s' ) ); ?>
+        <?php next_comments_link( __( 'Newer Comments &rarr;', '_s' ) ); ?>
+    <?php endif; ?>
+  <?php endif; ?>
+  = partial 'partials/wp/comment_form'

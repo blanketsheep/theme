@@ -1,0 +1,14 @@
+Thumbs.db
+.DS_Store
+/.sass-cache
+/node_modules
+
+!/Gemfile
+/Gemfile.lock
+
+/deploy_key
+/deploy_key.pub
+!/deploy_key.enc
+
+/build
+!/source

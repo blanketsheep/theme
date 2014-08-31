@@ -1,0 +1,3 @@
+title: "<?php wp_title( '|', true, 'right' ); ?>"
+head: "<?php wp_head(); ?>"
+footer: "<?php wp_footer(); ?>"
