@@ -1,3 +1,13 @@
+- if current_page.data.wp_php_head
+  - phpHead = current_page.data.wp_php_head
+  | 
+    <?php
+    /*
+  - if phpHead.template_name
+    |Template Name: #{phpHead.template_name}
+  |
+    */
+    ?>
 = partial 'partials/wp/header'
 = yield
 = partial 'partials/wp/footer'
