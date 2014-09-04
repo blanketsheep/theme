@@ -22,6 +22,7 @@
       bottom: 0
   #home_slide_items
     $map: map-get($layout-home, slides)
+    $slide-duration: 2s
     &
       +transition
       +transition-property(opacity)
@@ -36,6 +37,8 @@
       min-height: 100%
       .main
         top: auto !important
+        +transition
+        +transition-property(opacity)
         >.container
           +padding-leader( map-get($map, leader) )
           +padding-trailer( map-get($map, trailer) )
@@ -44,9 +47,16 @@
         //opacity: 0
       &[data-item-key]
         +animation
-        +animation-duration(2s)
+        +animation-duration($slide-duration)
         +animation-fill-mode(both)
         //opacity: 1
+      &[data-is-visible]
+        .main
+          opacity: 1
+          +transition-delay($slide-duration)
+      &:not([data-is-visible])
+        .main
+          opacity: 0
     &[data-is-first] .slide_item
       +animation-name(none)
     &:not([data-is-first]) .slide_item
