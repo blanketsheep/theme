@@ -1,1 +1,3 @@
 primary_menu: "__( 'Primary Menu', '_s' )"
+sidebar_footer: "__( 'Footer', '_s' )"
+sidebar_about: "__( 'About', '_s' )"

@@ -1,0 +1,30 @@
+=layout_archive
+  +layout_archive_breakpoint
+  #archive_header
+    $map: map-get($layout_archive, header)
+    +text-style-size(true)
+    +text-style-color(true)
+    +text-style-decoration(true)
+    position: relative
+    .background
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+      background-position: center center
+      +background-size(cover)
+      img
+        display: none
+    .main
+      position: relative
+      >.container
+        +padding-leader( map-get($map, leader) )
+        +padding-trailer( map-get($map, trailer) )
+  #archive_main
+
+=layout_archive_breakpoint
+  #archive_header
+    .main
+      >.container
+        +container

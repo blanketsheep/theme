@@ -1,0 +1,15 @@
+article.slide_item
+  <?php if( has_post_thumbnail() ): ?>
+    <?php $src = wp_get_attachment_image_src( get_post_thumbnail_id() ) ?>
+    - src = '<?php echo esc_attr($src[0]); ?>'
+    - style = "background-image:url(" + src + ");"
+    div.background style=style
+      img src=src
+  <?php endif; ?>
+  div.main
+    div.container
+      h1
+        a href="<?php echo get_permalink(); ?>"
+          == "<?php the_title(); ?>"
+      div
+        <?php the_content(); ?>

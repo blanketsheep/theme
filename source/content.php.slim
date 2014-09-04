@@ -1,5 +1,21 @@
 <article id=#{data.post.the_id} <?php post_class(); ?>>
-  header
-  div
-  footer
+  div.container
+    <?php if( has_post_thumbnail() ): ?>
+      <?php $src = wp_get_attachment_image_src( get_post_thumbnail_id() ) ?>
+      - src = '<?php echo esc_attr($src[0]); ?>'
+      - style = "background-image:url(" + src + ");"
+      div.image
+        a.background href="<?php echo get_permalink(); ?>" style=style
+    <?php endif; ?>
+    header.header
+      div.container
+        h1
+          a href="<?php echo get_permalink(); ?>"
+            == "<?php the_title(); ?>"
+    div.main
+      div.container
+        <?php the_content(); ?>
+    footer.footer
+      div.container
+        = partial 'partials/wp/posted_on'
 </article>

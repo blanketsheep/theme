@@ -1,2 +1,30 @@
 @import 'init'
 @import 'reset'
+
+@import 'partials/widgets/*'
+@import 'partials/layouts/*'
+
+body
+  color: map-get($init, color)
+  background-color: map-get($init, background-color)
+
+#wrapper
+  position: relative
+  min-height: 100%
+  min-height: 100vh
+
+#header
+  +header
+
+#main
+  &
+    +padding-leader( map-get($header,height) )
+  #about
+    +layout_about
+  #archive
+    +layout_archive
+  #home
+    +layout_home
+
+#footer
+  +footer

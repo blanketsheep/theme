@@ -4,7 +4,7 @@
 @import 'susy';
 
 $susy: (
-  column-width: 24px,
+  column-width: 18px,
   columns: 48,
   gutters: 1/2,
   math: static,
@@ -18,7 +18,7 @@ $susy: (
     toggle: top right
   )
 );
-      
+
 $rhythm-unit: 'rem';
 $rem-with-px-fallback: true;
 $base-font-size: 16px;
@@ -27,10 +27,93 @@ $base-line-height: 24px;
 $default-transition-duration: .25s;
 $default-transition-function: ease;
 
+$default-animation-timing-function: $default-transition-function;
+$default-animation-duration: $default-transition-duration;
+//$default-animation-fill-mode: both;
+
 $default-box-shadow-h-offset: 0;
 $default-box-shadow-v-offset: 1px;
 $default-box-shadow-blur: 3px;
+$default-box-shadow-color: rgba(0,0,0,.125);
 
 $default-text-shadow-h-offset: $default-box-shadow-h-offset;
 $default-text-shadow-v-offset: $default-box-shadow-v-offset;
 $default-text-shadow-blur: $default-box-shadow-blur;
+$default-text-shadow-color: rgba(0,0,0,.4);
+
+@import '_colors';
+
+$init: (
+  color: rgb(0,0,0),
+  background-color: lighten( map-get($lemon-soda, end-of-the-day), 15% )
+);
+
+$header: (
+  height: 3,
+  leader: 1,
+  trailer: 1,
+  not-hover: (
+    background-color: transparentize( rgb(255,255,255), 1 ),
+    color: lighten( map-get($init, color), 100% ),
+    box-shadow: (
+      hoff: 0,
+      voff: 0,
+      blur: 0
+    ),
+    text-shadow: (
+      hoff: $default-text-shadow-h-offset,
+      voff: $default-text-shadow-v-offset,
+      blur: $default-text-shadow-blur
+    )
+  ),
+  hover: (
+    background-color: transparentize( rgb(255,255,255), .25 ),
+    color: map-get($init, color),
+    box-shadow: (
+      hoff: $default-box-shadow-h-offset,
+      voff: $default-box-shadow-v-offset,
+      blur: $default-box-shadow-blur
+    ),
+    text-shadow: (
+      hoff: 0,
+      voff: 0,
+      blur: 0
+    )
+  )
+);
+
+$footer: (
+  background-color: map-get($lemon-soda, mezz),
+  highlight: lighten( map-get($init, color), 100% ),
+  color: lighten( map-get($init, color), 95% )
+);
+
+$layout-about: (
+  whats: (
+    leader: 7,
+    trailer: 7
+  ),
+  widgets: (
+    leader: 1,
+    trailer: 1,
+    item-leader: 1,
+    item-trailer: 1
+  )
+);
+
+$layout-archive: (
+  header: (
+    leader: 5,
+    trailer: 1
+  )
+);
+
+$layout-home: (
+  slides: (
+    ratio: "32:9",
+    leader:  3,
+    trailer: 3
+  )
+);
+
+@import 'mixins'

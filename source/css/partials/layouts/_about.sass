@@ -1,0 +1,46 @@
+=layout_about
+  +layout_about_breakpoint
+  #about_whats
+    position: relative
+    .background
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+      opacity: .35
+      iframe
+        width: 100%
+        height: 100%
+    .main
+      position: relative
+      .content
+        .text
+          text-align: center
+  #about_widgets
+      
+
+=layout_about_breakpoint
+  $container-span: (susy-get(columns) / 2)
+  #about_whats
+    $whats: map-get($layout-about,whats)
+    .main
+      .content
+        $leader: map-get($whats, leader)
+        $trailer: map-get($whats, trailer)
+        +padding-leader($leader)
+        +padding-trailer($trailer)
+        +container($container-span)
+  #about_widgets
+    $widgets: map-get($layout-about,widgets)
+    $leader: map-get($widgets, leader)
+    $trailer: map-get($widgets, trailer)
+    +padding-leader($leader)
+    +padding-trailer($trailer)
+    .widget_item
+      $leader: map-get($widgets, leader)
+      $trailer: map-get($widgets, trailer)
+      +leader($leader)
+      +trailer($trailer)
+      >.container
+        +container($container-span)

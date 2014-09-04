@@ -1,0 +1,44 @@
+=header
+  +header-breakpoint
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: auto
+  >.container
+    &
+      +transition-property(color,background-color,box-shadow,text-shadow)
+      +transition-duration
+      +transition-timing-function
+    &:not(:hover)
+      +header-coloring( map-get($header,not-hover) )
+    &:hover
+      +header-coloring( map-get($header,hover) )
+  ul
+  li
+    text-align: center
+    >a
+      display:  block
+      $leader:  map-get($header, 'leader')
+      $trailer: map-get($header, 'trailer') 
+      $height:  (map-get($header, 'height') - $leader - $trailer)
+      +padding-leader($leader)
+      +padding-trailer($trailer)
+      height: rhythm($height)
+
+=header-breakpoint
+  >.container
+    //+container
+  ul
+    +container
+  li
+    $item-size: (susy-get(columns) / 4)
+    +span($item-size nest)
+
+=header-coloring($map)
+  background-color: map-get($map,background-color)
+  color: map-get($map,color)
+  $box-shadow:  map-get($map,box-shadow)
+  $text-shadow: map-get($map,text-shadow)
+  +single-box-shadow( map-get($box-shadow,hoff), map-get($box-shadow,voff), map-get($box-shadow,blur) )
+  +single-text-shadow( map-get($text-shadow,hoff), map-get($text-shadow,voff), map-get($text-shadow,blur) )

@@ -1,0 +1,15 @@
+=footer
+  +footer_breakpoint
+  &
+    background-color: map-get($footer,background-color)
+    color: map-get($footer,color)
+  .widgets
+  .copyright
+    text-align: center
+
+=footer_breakpoint
+  .container.widgets
+    +container
+    >.widget_item
+      $span: (susy-get(columns) / 4)
+      +span($span)

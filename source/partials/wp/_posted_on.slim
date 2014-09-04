@@ -1,0 +1,36 @@
+/== "<?php _s_posted_on(); ?>"
+|
+  <?php
+    $local_functions = array();
+    $local_vars = array();
+    
+    $local_vars['published_time'] = call_user_func(function(){
+      $r = array();
+      $r['iso']  = get_the_date('c');
+      $r['text'] = get_the_date();
+      return $r;
+    });
+    $local_vars['updated_time'] = call_user_func(function(){
+      if( get_the_time('U') === get_the_modified_time('U') )
+        return array();
+      $r = array();
+      $r['iso']  = get_the_modified_date('c');
+      $r['text'] = get_the_modified_date();
+      return $r;
+    });
+  ?>
+span.posted_on
+  <?php if( true ): ?>
+    span.published
+      time datetime="<?php esc_attr_e( $local_vars['published_time']['iso'] ) ?>"
+        == "<?php esc_html_e( $local_vars['published_time']['text'] ) ?>"
+  <?php endif; ?>
+  <?php if( !empty($local_vars['updated_time']) ): ?>
+    span.updated
+      time datetime="<?php esc_attr_e( $local_vars['updated_time']['iso'] ) ?>"
+        == "<?php esc_html_e( $local_vars['updated_time']['text'] ) ?>"
+  <?php endif; ?>
+|
+  <?php
+    unset($local_functions, $local_vars);
+  ?>

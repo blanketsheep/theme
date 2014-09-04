@@ -1,2 +1,3 @@
 charset: "<?php bloginfo( 'charset' ); ?>"
 pingback: "<?php bloginfo( 'pingback_url' ); ?>"
+template_url: "<?php bloginfo( 'template_url' ) ?>"

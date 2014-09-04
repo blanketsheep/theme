@@ -1,0 +1,33 @@
+---
+layout: default
+---
+|
+  <?php
+    $featured_query = new WP_Query( array(
+      'meta_key'   => '_is_ns_featured_post',
+      'meta_value' => 'yes'
+    ) );
+  ?>
+div#home
+  section#home_slide_wrapper
+    div#home_slide
+      div.background
+      div#home_slide_items
+        <?php while( $featured_query->have_posts() ): $featured_query->the_post(); ?>
+          = partial 'partials/wp/template_part/content_slide_item'
+        <?php endwhile; ?>
+        <?php wp_reset_postdata(); ?>
+  section#home_articles
+    main.container
+      <?php if( have_posts() ): ?>
+        <?php while( have_posts() ): the_post(); ?>
+          = partial 'partials/wp/template_part/content_post_format'
+        <?php endwhile; ?>
+        = partial 'partials/wp/paging_nav'
+      <?php else: ?>
+        = partial 'partials/wp/template_part/content_none'
+      <?php endif; ?>
+|
+  <?php
+    unset($featured_query);
+  ?>

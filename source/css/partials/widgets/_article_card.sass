@@ -1,0 +1,34 @@
+=article-card
+  +article-card-breakpoint
+  >.container
+    +box-shadow
+    +text-style-size
+  +article-card-sizing
+  .image
+    +rhythm-padding(3,3)
+    position: relative
+    .background
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+      background-position: center center
+      +background-size(cover)
+  .header, .main, .footer
+    +pad(1)
+  .header
+    +leader(1)
+  >.container
+    +padding-trailer(1)
+
+=article-card-breakpoint
+  
+
+=article-card-sizing($span: 12, $hmargin: 0, $vmargin: 1)
+  &
+    //+span($span nest)
+    +span($span)
+  >.container
+    +rhythm-margins($vmargin)
+    +squish($hmargin)
