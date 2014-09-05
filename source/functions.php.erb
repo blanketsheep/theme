@@ -49,7 +49,10 @@ function _s_scripts() {
     wp_enqueue_script( 'comment-reply' );
   }
   
-  wp_enqueue_script( 'jquery' );
+  //wp_enqueue_script( 'jquery' );
+  
+  wp_enqueue_script(  'theme.layout-default', get_template_directory_uri().'/js/default.js', array('jquery') );
+  wp_enqueue_script( 'theme.layout-home',    get_template_directory_uri().'/js/home.js',    array('jquery') );
   
 }
 add_action( 'wp_enqueue_scripts', '_s_scripts' );

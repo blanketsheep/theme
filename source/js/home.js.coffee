@@ -75,5 +75,6 @@
       
       setTimeout onInterval,10000
     
-    setTimeout onInterval, 1000
+    if $(container).size() > 0
+      setTimeout onInterval, 1000
 )(jQuery)

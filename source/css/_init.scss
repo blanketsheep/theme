@@ -67,7 +67,7 @@ $header: (
     )
   ),
   hover: (
-    background-color: transparentize( rgb(255,255,255), .25 ),
+    background-color: transparentize( rgb(255,255,255), .125 ),
     color: map-get($init, color),
     box-shadow: (
       hoff: $default-box-shadow-h-offset,
@@ -116,4 +116,20 @@ $layout-home: (
   )
 );
 
-@import 'mixins'
+$z-indexes: (
+  head:   999,
+  header: 998,
+  main:   997,
+  footer: 996,
+  sidebar-top: 995,
+  sidebar: 994,
+  sidebar-left: 993,
+  sidebar-right: 992
+);
+
+$layout-with-sidebar: (
+  left-span: 12
+);
+
+@import 'mixins';
+@import 'z_index';

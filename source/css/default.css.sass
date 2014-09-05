@@ -18,13 +18,17 @@ body
 
 #main
   &
+    position: relative
     +padding-leader( map-get($header,height) )
   #about
     +layout_about
   #archive
     +layout_archive
+  +layout_with_sidebar
+  #home_slide_wrapper
+    +layout_home_top
   #home
-    +layout_home
+    +layout_home_body
 
 #footer
   +footer

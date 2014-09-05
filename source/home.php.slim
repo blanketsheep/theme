@@ -1,14 +1,14 @@
 ---
-layout: default
+layout: with_sidebar
 ---
-|
-  <?php
-    $featured_query = new WP_Query( array(
-      'meta_key'   => '_is_ns_featured_post',
-      'meta_value' => 'yes'
-    ) );
-  ?>
-div#home
+- content_for :sidebar_top do
+  |
+    <?php
+      $featured_query = new WP_Query( array(
+        'meta_key'   => '_is_ns_featured_post',
+        'meta_value' => 'yes'
+      ) );
+    ?>
   section#home_slide_wrapper
     div#home_slide
       div.background
@@ -17,7 +17,8 @@ div#home
           = partial 'partials/wp/template_part/content_slide_item'
         <?php endwhile; ?>
         <?php wp_reset_postdata(); ?>
-  section#home_articles
+div#home
+  section#home_articles.layout_main_position
     main.container
       <?php if( have_posts() ): ?>
         <?php while( have_posts() ): the_post(); ?>

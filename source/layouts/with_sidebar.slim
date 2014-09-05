@@ -1,0 +1,9 @@
+= wrap_layout :default do
+  div#sidebar_top
+    - if content_for?(:sidebar_top)
+      = yield_content :sidebar_top
+  div#with_sidebar
+    div#sidebar_left
+      = yield
+    div#sidebar_right
+      = 'mogel'

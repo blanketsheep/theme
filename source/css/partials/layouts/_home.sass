@@ -1,6 +1,8 @@
-=layout_home
-  +layout_home_breakpoint
-  #home_slide_wrapper
+=layout_home_top
+  +layout_home_top_breakpoint
+  &
+    margin-top: -( rhythm( map-get($header,height) ) )
+  &
     $map: map-get($layout-home, slides)
     +responsive-ratio( map-get($map,ratio) )
   #home_slide
@@ -43,48 +45,53 @@
           +padding-leader( map-get($map, leader) )
           +padding-trailer( map-get($map, trailer) )
     & .slide_item
-      &:not([data-item-key])
-        //opacity: 0
       &[data-item-key]
         +animation
-        +animation-duration($slide-duration)
         +animation-fill-mode(both)
-        //opacity: 1
       &[data-is-visible]
+        +animation-name(show_slide_item)
         .main
           opacity: 1
-          +transition-delay($slide-duration)
       &:not([data-is-visible])
+        +animation-name(hide_slide_item)
         .main
           opacity: 0
     &[data-is-first] .slide_item
-      +animation-name(none)
-    &:not([data-is-first]) .slide_item
+      &[data-item-key]
+        +animation-duration(1ms)
       &[data-is-visible]
-        +animation-name(show_slide_item)
+        .main
+          +transition-delay($default-transition-duration)
       &:not([data-is-visible])
-        +animation-name(hide_slide_item)
-    &[data-is-first] .slide_item
-      &:not([data-is-visible])
-        display: none
+        opacity: 0
+    &:not([data-is-first]) .slide_item
+      &[data-item-key]
+        +animation-duration($slide-duration)
+      &[data-is-visible]
+        .main
+          +transition-delay($slide-duration)
+
+=layout_home_top_breakpoint
+  #home_slide_items
+    .slide_item
+      .main
+        >.container
+          +container
+
+=layout_home_body
+  +layout_home_body_breakpoint
   #home_articles
     >.container
     .post
       +article-card
-      
 
-=layout_home_breakpoint
+=layout_home_body_breakpoint
   #home_articles
     >.container
       +container
     .post
       $card-span: ( susy-get(columns) / 4 )
       +article-card-sizing($card-span)
-  #home_slide_items
-    .slide_item
-      .main
-        >.container
-          +container
 
 +keyframes(show_slide_item)
   0%

@@ -1,6 +1,6 @@
 =header
   +header-breakpoint
-  position: absolute
+  position: fixed
   top: 0
   left: 0
   right: 0
@@ -10,10 +10,10 @@
       +transition-property(color,background-color,box-shadow,text-shadow)
       +transition-duration
       +transition-timing-function
-    &:not(:hover)
-      +header-coloring( map-get($header,not-hover) )
-    &:hover
+    body[data-show-header] &
       +header-coloring( map-get($header,hover) )
+    body:not([data-show-header]) &
+      +header-coloring( map-get($header,not-hover) )
   ul
   li
     text-align: center
@@ -24,7 +24,7 @@
       $height:  (map-get($header, 'height') - $leader - $trailer)
       +padding-leader($leader)
       +padding-trailer($trailer)
-      height: rhythm($height)
+      height: rhythm($height)  
 
 =header-breakpoint
   >.container
