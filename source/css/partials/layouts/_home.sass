@@ -86,11 +86,13 @@
       +article-card
 
 =layout_home_body_breakpoint
+  $columns: susy-get(columns) - map-get($layout-with-sidebar,right-span)
   #home_articles
     >.container
-      +container
+      //+container
+      +container($columns)
     .post
-      $card-span: ( susy-get(columns) / 4 )
+      $card-span: ( $columns / 3 )
       +article-card-sizing($card-span)
 
 +keyframes(show_slide_item)

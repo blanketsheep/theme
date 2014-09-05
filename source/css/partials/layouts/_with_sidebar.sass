@@ -10,9 +10,9 @@
   #sidebar_top
   #with_sidebar
     +container
-    $left-span:  map-get($layout-with-sidebar,left-span)
-    $right-span: (susy-get(columns) - $left-span)
+    $right-span:  map-get($layout-with-sidebar,right-span)
+    $left-span: (susy-get(columns) - $right-span)
     #sidebar_left
-      +span($left-span)
+      +span($left-span nest)
     #sidebar_right
-      +span($right-span)
+      +span($right-span nest)
