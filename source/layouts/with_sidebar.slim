@@ -6,4 +6,7 @@
     div#sidebar_left
       = yield
     div#sidebar_right
-      = 'mogel'
+      - if content_for? (:sidebar_right)
+        = yield_content :sidebar_right
+      - else
+        == "<?php dynamic_sidebar( #{data.functions.sidebar_general_id} ) ?>"

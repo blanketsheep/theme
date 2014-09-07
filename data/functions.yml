@@ -1,2 +1,10 @@
-sidebar_footer_id: "'sidebar_footer'"
-sidebar_about_id: "'sidebar_about'"
+sidebar_footer_id:   "'sidebar_footer'"
+sidebar_about_id:    "'sidebar_about'"
+sidebar_general_id:  "'sidebar_general'"
+user_profile:
+  fields_func: "_s_user_profile_fields"
+  update_func: "_s_update_user_profile_fields"
+  form_name:
+    is_writer: "_s_is_writer"
+  meta_key:
+    is_writer: "_s_is_writer"

@@ -1,0 +1,56 @@
+=circle-image
+  +circle-image-breakpoint
+  +gpu-acceleration
+  &, &>.container, .background
+    display: block
+  &, &>.container
+    +border-radius(50%)
+  &
+    overflow: hidden
+    border-style: solid
+    +box-sizing(border-box)
+    +box-shadow
+  >.container
+    position: relative
+  .background
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+  .background
+    background-position: center center
+    +background-size(cover)
+    img
+      display: none
+
+=circle-image-breakpoint
+
+=circle-image-sizing($height: false, $border-width: false)
+  @if $height == false
+    $height: map-get($circle-image, height)
+  @if $border-width == false
+    $border-width: map-get($circle-image, border-width)
+  $size: rhythm($height)
+  &
+    border-width: $border-width
+  &, &>.container
+    width:  $size
+    height: $size
+  >.container
+    margin: -($border-width)
+
+=circle-image-coloring($background-color: false, $border-color: false)
+  @if $background-color == false
+    $background-color: map-get($circle-image,background-color)
+  @if $border-color == false
+    $border-color: map-get($circle-image, border-color)
+  &
+    border-color: $border-color
+  >.container
+    background-color: $background-color
+
+.circle_image
+  +circle-image
+  +circle-image-sizing
+  +circle-image-coloring

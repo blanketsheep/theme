@@ -7,13 +7,12 @@
         attr:
           scrollTop:  'data-scroll-top'
           showHeader: 'data-show-header'
-      (() ->
+      onResize = ->
         elm = $('.layout_main_position')
         if $(elm).size() < 1
           locals.mainPosition = 0
         else
           locals.mainPosition = $(elm).eq(0).offset().top
-      )()
       onScroll = ->
         position = $(window).scrollTop()
         body = $('body').eq(0)
@@ -27,6 +26,8 @@
           $(body).removeAttr consts.attr.showHeader
       
       $(window).on 'scroll', onScroll
+      $(window).on 'resize', onResize
+      onResize()
       onScroll()
     )()
 )(jQuery)

@@ -1,0 +1,61 @@
+=layout_author
+  +layout_author_breakpoint
+  #author_header
+    &
+      margin-top: -( rhythm( map-get($header,height) ) )
+    $map: map-get($layout-author,header)
+    >.top
+      position: relative
+      height: rhythm( map-get($map,height) )
+      >.background
+        position: absolute
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        background-position: center center
+        +background-size(cover)
+        img
+          display: none
+    >.bottom
+      >.container
+      .icon
+        margin-top: -( rhythm(map-get($circle-image,height) / 2) )
+        .circle_image
+          margin: 0 auto
+      .text
+        text-align: center
+        +padding-leader(1)
+        +padding-trailer(1)
+        h1
+          +adjust-font-size-to(2rem)
+  #author_main
+    .text
+      +padding-leader(3)
+      +padding-trailer(3)
+      +text-style-size
+      +text-style-color
+      +text-style-decoration
+      +text-style-whitespace
+  #author_posts
+    >.container
+      .post
+        +article-card
+
+=layout_author_breakpoint
+  #author_header
+    >.bottom
+      >.container
+        +container
+  #author_main
+    >.container
+      +container
+      $margin: ( susy-get(columns) / 4 )
+      .text
+        +pad($margin)
+  #author_posts
+    >.container
+      +container
+      .post
+        $card-span: ( susy-get(columns) / 4 )
+        +article-card-sizing($card-span)

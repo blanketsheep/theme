@@ -15,6 +15,6 @@ div#about
           div.text
             <?php the_content(); ?>
         <?php endwhile; ?>
-  section#about_widgets
+  section#about_widgets.layout_main_position
     div.container
       == "<?php dynamic_sidebar( #{data.functions.sidebar_about_id} ) ?>"

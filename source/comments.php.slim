@@ -3,7 +3,8 @@
 <?php endif; ?>
 div#comments
   <?php if( have_comments() ): ?>
-    h2
+    h2.comments_number
+      == "<?php comments_number(); ?>"
     ol
       |
         <?php

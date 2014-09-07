@@ -1,0 +1,31 @@
+---
+layout: default
+---
+<?php $author_id = get_the_author_meta('ID'); ?>
+div#author
+  header#author_header
+    div.top
+      <?php $src = get_avatar_url($author_id); ?>
+      div.background style="background-image:url(<?php echo $src; ?>);"
+        img src="<?php echo $src; ?>"
+    div.bottom.layout_main_position
+      div.container
+        div.icon
+          <?php echo do_shortcode('[circle_image src="'.get_avatar_url($author_id).'" href="'.get_author_posts_url($author_id).'"]'); ?>
+        div.text
+          h1
+            <?php the_author_meta('display_name') ?>
+  main#author_main
+    div.container
+      div.text
+        <?php the_author_meta('description'); ?>
+  div#author_posts
+    div.container
+      <?php if( have_posts() ): ?>
+        <?php while( have_posts() ): the_post(); ?>
+          = partial 'partials/wp/template_part/content_post_format'
+        <?php endwhile; ?>
+        = partial 'partials/wp/paging_nav'
+      <?php else: ?>
+        = partial 'partials/wp/template_part/content_none'
+      <?php endif; ?>

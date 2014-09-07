@@ -1,12 +1,66 @@
 ---
 layout: default
 ---
-div#single
-  main.container
-    <?php while( have_posts() ): the_post(); ?>
-      = partial 'partials/wp/template_part/content_single'
-      = partial 'partials/wp/post_nav'
-      <?php if( comments_open() || '0' != get_comments_number() ): ?>
-        = partial 'partials/wp/comments_template'
-      <?php endif; ?>
-    <?php endwhile; ?>
+- src   = ''
+- style = ''
+<?php $src = ''; ?>
+<?php if( has_post_thumbnail() ): ?>
+  <?php $src = wp_get_attachment_image_src( get_post_thumbnail_id() ) ?>
+  - src = '<?php echo esc_attr($src[0]); ?>'
+  - style = "background-image:url(" + src + ");"
+<?php endif; ?>
+article#single
+  /<?php while( have_posts() ): the_post(); ?>
+  <?php if( have_posts() ): the_post(); ?>
+    div.container
+      /= partial 'partials/wp/template_part/content_single'
+      /= partial 'partials/wp/post_nav'
+      header#single_header
+        div.background style=style
+        div.container
+          div.row.middle.layout_main_position
+            h1
+              a href="<?php echo get_permalink(); ?>"
+                == "<?php the_title(); ?>"
+          div.row.bottom
+            div.item.date
+              div.container
+                span.icon
+                span.text
+                  = partial 'partials/wp/posted_on'
+            div.item.category
+              div.container
+                span.icon
+                span.text
+                  == "<?php the_category(', '); ?>"
+            div.item.count
+              div.container
+                span.icon
+                span.text
+                  == "<?php comments_number(); ?>"
+            div.item.author
+              div.container
+                span.icon
+                span.text
+                  == "<?php the_author_meta('display_name'); ?>"
+      div#single_main
+        div.container
+          div#single_content
+            div.container
+              div#single_image
+                div.container
+                  div.image
+                    div.background style=style
+                      img src=src
+              div#single_text
+                <?php the_content(); ?>
+              footer#single_footer
+                div.container
+                  <?php if( comments_open() || '0' != get_comments_number() ): ?>
+                    = partial 'partials/wp/comments_template'
+                  <?php endif; ?>
+          aside#single_sidebar
+            div.container
+              == "<?php dynamic_sidebar( #{data.functions.sidebar_general_id} ) ?>"
+  <?php endif; ?>
+  /<?php endwhile; ?>

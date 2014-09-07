@@ -1,0 +1,43 @@
+<?php
+if( !function_exists('<%= data.functions.user_profile.fields_func %>') ):
+function <%= data.functions.user_profile.fields_func %>($user) { ?>
+
+<h3><?php echo <%= data.i18n.user_profile.webmagagine %>; ?></h3>
+
+<table class="form-table">
+  <tbody>
+    <tr>
+      <th>
+        <label><?php echo <%= data.i18n.user_profile.writer_info %>; ?></label>
+      </th>
+      <td>
+        <?php $form_data = get_user_meta($user->ID, '<%= data.functions.user_profile.meta_key.is_writer %>'); ?>
+        <?php if( !empty($form_data[0] ) && filter_var($form_data[0], FILTER_VALIDATE_BOOLEAN) ): ?>
+        <input type="checkbox" name="<%= data.functions.user_profile.form_name.is_writer %>" checked="checked" />
+        <?php else: ?>
+        <input type="checkbox" name="<%= data.functions.user_profile.form_name.is_writer %>" />
+        <?php endif; ?>
+        <span><?php echo <%= data.i18n.user_profile.is_writer %>; ?></span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<?php }
+endif;
+
+add_action('show_user_profile', '<%= data.functions.user_profile.fields_func %>');
+add_action('edit_user_profile', '<%= data.functions.user_profile.fields_func %>');
+
+if( !function_exists('<%= data.functions.user_profile.update_func %>') ):
+function <%= data.functions.user_profile.update_func %>($user_id) {
+  $form_bool = false;
+  if( !empty($_POST['<%= data.functions.user_profile.form_name.is_writer %>']) )
+    $form_bool = filter_var($_POST['<%= data.functions.user_profile.form_name.is_writer %>'], FILTER_VALIDATE_BOOLEAN);
+  if( current_user_can('edit_user',$user_id) )
+    update_user_meta($user_id, '<%= data.functions.user_profile.meta_key.is_writer %>', $form_bool);
+}
+endif;
+
+add_action('personal_options_update', '<%= data.functions.user_profile.update_func %>');
+add_action('edit_user_profile_update', '<%= data.functions.user_profile.update_func %>');

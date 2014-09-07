@@ -1,0 +1,169 @@
+=layout_single
+  +layout_single_breakpoint
+  margin-top: -( rhythm( map-get($header,height) ) )
+  >.container
+    //+box-shadow
+    //background-color: map-get($layout-single, background-color)
+    +padding-trailer(3)
+  #single_header
+    +padding-leader(8)
+    +padding-trailer(1)
+    &
+      +transition-property(color, text-shadow)
+      +transition-duration
+      +transition-timing-function
+    body:not([data-show-header]) &
+      +text-style-color(true)
+      +text-style-decoration(true)
+      +text-style-size(true)
+    body[data-show-header] &
+      +text-style-color(false)
+      +text-style-decoration(false)
+      +text-style-size(false)
+    &,&>.container
+      position: relative
+    >.background
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      bottom: -( rhythm(8) )
+      background-position: center center
+      +background-size(cover)
+      &
+        +transition-property(opacity)
+        +transition-duration
+        +transition-timing-function
+      body[data-show-header] &
+        opacity: 0
+      body:not([data-show-header]) &
+        opacity: 1
+    >.container
+      >.row
+        &.bottom
+          &
+            +box-shadow(0 1px 0 $default-box-shadow-color, 0 -1px 0 $default-box-shadow-color)
+          >.item
+            +adjust-leading-to(2)
+            >.container
+              position: relative
+              $icon-width: rhythm(2)
+              >.icon
+                display: block
+                position: absolute
+                top: 0
+                left: 0
+                bottom: 0
+                right: auto
+                font-family: "dashicons"
+                text-align: center
+                width: $icon-width
+                //background-color: $default-box-shadow-color
+              &
+                padding-left: $icon-width
+              >.text
+                display: block
+                //padding-left: 1em
+                //text-align: center
+                +adjust-font-size-to(.8rem,2)
+                +ellipsis(true)
+            &.date
+              .updated
+                display: none
+              .icon:before
+                content: "\f508"
+            &.category .icon:before
+              content: "\f318"
+            &.count .icon:before
+              content: "\f125"
+            &.author .icon:before
+              content: "\f110"
+        &.middle
+          +rhythm-padding(1)
+          h1
+            +squish(1)
+            +adjust-font-size-to(3rem)
+  #single_main
+    position: relative
+    >.container
+      +rhythm-padding(2)
+    #single_content
+      >.container
+        +box-shadow
+        background-color: map-get($layout-single, background-color)
+        +pad(1)
+        //+squish(1)
+        +post(1)
+        +rhythm-padding(2)
+      #single_image
+        .image
+          +responsive-ratio($ratio: "24:9")
+          .background
+            background-position: center center
+            +background-size(cover)
+            img
+              display: none
+      #single_text
+        +rhythm-padding(2)
+        +text-style-size
+        +text-style-color
+        +text-style-decoration
+        +text-style-whitespace
+    #single_sidebar
+      &
+        +transition-property(opacity)
+        +transition-duration
+        +transition-timing-function
+      body:not([data-show-header]) &
+        opacity: 0
+      body[data-show-header] &
+        opacity: 1
+  #single_footer
+    +text-style-size
+    +text-style-color
+    +text-style-decoration
+    //+text-style-whitespace
+    &
+      +rhythm-padding(1)
+      +single-box-shadow(0,-1px,0)
+    >.container
+    .comments_number
+      +rhythm-margins(1)
+    li.comment
+      +pad(1)
+      +rhythm-padding(1)
+    #resopnd
+      +pad(1)
+      +rhythm-padding(1)
+
+=layout_single_breakpoint
+  >.container
+    //+container
+  #single_header
+    >.container
+      >.row
+        +container
+        &.bottom
+          $pad: 8
+          $columns: susy-get(columns) - ($pad * 2)
+          //+container($columns)
+          +container
+          >.item
+            $span: ($columns / 4)
+            +span($span nest)
+            &:first-child
+              +prefix($pad)
+            &:last-child
+              +suffix($pad)
+  #single_main
+    >.container
+      +container
+      $right: map-get($layout-with-sidebar,right-span)
+      $left:  susy-get(columns) - $right
+      #single_content
+        +span($left nest)
+      #single_sidebar
+        +span($right nest)
+  #single_footer
+    >.container
+      //+container

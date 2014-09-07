@@ -1,0 +1,58 @@
+<?php
+
+class _s_Writers_Icon_Widget extends WP_Widget {
+  
+  public function __construct() {
+    parent::__construct(
+      '_s_Writers_Icon_Widget',
+      <%= data.i18n.writers_icon_widget.name %>,
+      array(
+        'description' => <%= data.i18n.writers_icon_widget.description %>
+      )
+    );
+  }
+  
+  public function widget($args, $instance) {
+    echo $args['before_widget'];
+    
+    $title = apply_filters( 'widget_title', $instance['title'] );
+    if( !empty($title) )
+      echo $args['before_title'] . $title . $args['after_title'];
+    
+    echo '<div class="items">';
+    
+    $users = get_users(array(
+      'meta_key'     => '<%= data.functions.user_profile.meta_key.is_writer %>',
+      'meta_value'   => true,
+      'meta_compare' => '='
+    ));
+    foreach($users as $user): ?>
+      <article class="item">
+        <!--<?php var_dump($user); ?>-->
+        <div class="container">
+          <div class="top">
+            <?php echo do_shortcode('[circle_image src="'.get_avatar_url($user->ID).'" href="'.get_author_posts_url($user->ID).'"]'); ?>
+          </div>
+          <div class="main">
+            <h1>
+              <a href="<?php echo get_author_posts_url($user->ID); ?>"><?php echo $user->display_name; ?></a>
+            </h1>
+          </div>
+        </div>
+      </article>
+    <?php endforeach;
+    
+    echo '</div>';
+    
+    echo $args['after_widget'];
+  }
+  
+  public function form($instance) {
+    
+  }
+  
+  public function update($new_instance, $old_instance) {
+    
+  }
+  
+}

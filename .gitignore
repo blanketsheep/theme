@@ -5,6 +5,8 @@ Thumbs.db
 
 !/Gemfile
 /Gemfile.lock
+!/composer.json
+/composer.lock
 
 /deploy_key
 /deploy_key.pub
@@ -12,3 +14,6 @@ Thumbs.db
 
 /build
 !/source
+
+/vendor
+/source/vendor

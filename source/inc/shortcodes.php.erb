@@ -1,0 +1,16 @@
+<?php
+
+if( !function_exists('<%= data.shortcodes.circle_image.php %>') ):
+function <%= data.shortcodes.circle_image.php %>($attrs) {
+  extract(shortcode_atts(array(
+    'src'  => null,
+    'href' => null
+  ), $attrs));
+  
+  $r = $GLOBALS['_s_mustache']->loadTemplate('circle_image');
+  return $r->render(array(
+    'src'  => $src,
+    'href' => $href
+  ));
+}
+endif;

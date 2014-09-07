@@ -1,54 +1,63 @@
 ---
-layout: default
+layout: with_sidebar
 ---
-|
-  <?php
-    $local_functions = array();
-    $local_functions['echo_title'] = function(){
-      switch(true):
-        case is_category():
-          single_cat_title();
-          break;
-        case is_tag():
-          single_tag_title();
-          break;
-        case is_author():
-          get_the_author();
-          break;
-        case ( is_day() || is_month() || is_year() ):
-          get_the_date();
-          break;
-        default:
-          echo 'FORMAT OR ARCHIVES DAYO';
-      endswitch;
-    };
-    $local_functions['echo_taxonomy_image'] = function(){
-      if( !function_exists('z_taxonomy_image_url') )
-        return;
-      //$image_url = '';
-      $image_url = 'http://blanketsheep.github.io/hachioji/images/photos/14454285439_cc03bbc5a6_o-hd-1920x1080.jpg';
-      /*
-      switch(true):
-        case is_category():
-          $title = single_cat_title(null,false);
-          $image_url = z_taxonomy_image_url( get_cat_ID($title) );
-          break;
-        case is_tag():
-          $title = single_tag_title(null,false);
-          $prop = get_term_by('name',$title,'post_tag');
-          $image_url = z_taxonomy_image_url( $prop->slug );
-          break;
-      endswitch;
-      */
-      echo $image_url;
-    };
-  ?>
-div#archive
+- content_for :sidebar_top do
+  |
+    <?php
+      $local_vars      = array();
+      $local_functions = array();
+      $local_functions['echo_title'] = function(){
+        switch(true):
+          case is_category():
+            single_cat_title();
+            break;
+          case is_tag():
+            single_tag_title();
+            break;
+          case is_author():
+            get_the_author();
+            break;
+          case ( is_day() || is_month() || is_year() ):
+            get_the_date();
+            break;
+          default:
+            echo 'FORMAT OR ARCHIVES DAYO';
+        endswitch;
+      };
+      $local_functions['get_taxonomy_image'] = (function(){
+        if( !function_exists('z_taxonomy_image_url') )
+          return;
+        //$image_url = '';
+        $image_url = 'http://blanketsheep.github.io/hachioji/images/photos/14454285439_cc03bbc5a6_o-hd-1920x1080.jpg';
+        /*
+        switch(true):
+          case is_category():
+            $title = single_cat_title(null,false);
+            $image_url = z_taxonomy_image_url( get_cat_ID($title) );
+            break;
+          case is_tag():
+            $title = single_tag_title(null,false);
+            $prop = get_term_by('name',$title,'post_tag');
+            $image_url = z_taxonomy_image_url( $prop->slug );
+            break;
+        endswitch;
+        */
+        return $image_url;
+      });
+    ?>
   header#archive_header
-    - phpcode = "<?php call_user_func( $local_functions['echo_taxonomy_image'] ); ?>"
-    - style = "background-image:url(" + phpcode + ");"
-    div.background style=style
-      img src=phpcode
+    <?php $local_vars['image_src'] = ''; ?>
+    <?php $local_vars['style'] = ''; ?>
+    <?php if( is_category() ): ?>
+      <?php $local_vars['image_src'] = call_user_func( $local_functions['get_taxonomy_image'] ); ?>
+    <?php elseif( is_author() ): ?>
+      
+    <?php endif; ?>
+    <?php if( !empty($local_vars['image_src']) ): ?>
+      <?php $local_vars['style'] = sprintf('background-image:url(%s);',$local_vars['image_src']); ?>
+    <?php endif; ?>
+    div.background style="<?php echo $local_vars['style']; ?>"
+      img src="<?php echo $local_vars['image_src']; ?>"
     div.main
       div.container
         h1
@@ -58,17 +67,17 @@ div#archive
           <?php if( !empty( $term_description ) ): ?>
             <?php printf('%s', $term_description); ?>
           <?php endif; ?>
-  main#archive_main
-    div.container
-      <?php if( have_posts() ): ?>
-        <?php while( have_posts() ): the_post(); ?>
-          = partial 'partials/wp/template_part/content_post_format'
-        <?php endwhile; ?>
-        = partial 'partials/wp/paging_nav'
-      <?php else: ?>
-        = partial 'partials/wp/template_part/content_none'
-      <?php endif; ?>
+main#archive_main.layout_main_position
+  div.container
+    <?php if( have_posts() ): ?>
+      <?php while( have_posts() ): the_post(); ?>
+        = partial 'partials/wp/template_part/content_post_format'
+      <?php endwhile; ?>
+      = partial 'partials/wp/paging_nav'
+    <?php else: ?>
+      = partial 'partials/wp/template_part/content_none'
+    <?php endif; ?>
 |
   <?php
-    unset($local_functions);
+    unset($local_functions, $local_vars);
   ?>

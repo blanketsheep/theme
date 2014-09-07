@@ -103,7 +103,7 @@ $layout-about: (
 
 $layout-archive: (
   header: (
-    leader: 5,
+    leader: 8,
     trailer: 1
   )
 );
@@ -129,6 +129,23 @@ $z-indexes: (
 
 $layout-with-sidebar: (
   right-span: 12
+);
+
+$circle-image: (
+  height: 5,
+  border-width: 3px,
+  background-color: map-get($lemon-soda,mezz),
+  border-color: #ddd
+);
+
+$layout-author: (
+  header: (
+    height: 16
+  )
+);
+
+$layout-single: (
+  background-color: #fff
 );
 
 @import 'mixins';

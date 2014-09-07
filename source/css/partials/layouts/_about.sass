@@ -1,8 +1,10 @@
 =layout_about
   +layout_about_breakpoint
+  &
+    margin-top: -( rhythm( map-get($header,height) ) )
   #about_whats
     position: relative
-    .background
+    >.background
       position: absolute
       top: 0
       left: 0
@@ -16,9 +18,18 @@
       position: relative
       .content
         .text
+          +text-style-size
+          +text-style-color
+          +text-style-decoration
+          +text-style-whitespace
           text-align: center
+          .circle_image
+            +circle-image-sizing(8)
+            margin: 0 auto
+            +trailer(1)
   #about_widgets
-      
+    
+        
 
 =layout_about_breakpoint
   $container-span: (susy-get(columns) / 2)
@@ -44,3 +55,9 @@
       +trailer($trailer)
       >.container
         +container($container-span)
+    .widget__s_writers_icon_widget
+      .items
+        +container($container-span)
+        .item
+          $item-span: $container-span / 2
+          +span($item-span)

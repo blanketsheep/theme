@@ -1,3 +1,11 @@
-primary_menu: "__( 'Primary Menu', '_s' )"
-sidebar_footer: "__( 'Footer', '_s' )"
-sidebar_about: "__( 'About', '_s' )"
+primary_menu:        "__( 'Primary Menu', '_s' )"
+sidebar_footer:      "__( 'Footer', '_s' )"
+sidebar_about:       "__( 'About', '_s' )"
+sidebar_general:     "__( 'General', '_s' )"
+writers_icon_widget:
+  name:        "__( 'Writers Icon', '_s' )"
+  description: "__( 'Writers Icon Widget by Blanket Sheep', '_s' )"
+user_profile:
+  writer_info: "__( 'ライター情報', '_s' )"
+  is_writer:   "__( 'ライターとして表示する', '_s' )"
+  webmagagine: "__( 'ウェブマガジン', '_s' )"

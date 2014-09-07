@@ -1,0 +1,15 @@
+{
+  "name": "S64/theme",
+  "authors": [
+    {
+      "name": "Shuma Yoshioka",
+      "email": "s64.stdio@gmail.com"
+    }
+  ],
+  "config": {
+    "vendor-dir": "source/vendor"
+  },
+  "require": {
+    "mustache/mustache": "2.7"
+  }
+}
