@@ -95,6 +95,14 @@ function get_avatar_url($id_or_email, $size = null, $default = null, $alt = null
     }
 }
 
+/*
+if( !function_exists('<%= data.functions.comment_template_func %>') ):
+function <%= data.functions.comment_template_func %>($args, $comments) {
+  
+}
+endif;
+*/
+
 require get_template_directory().'/inc/template-tags.php';
 require get_template_directory().'/inc/shortcodes.php';
 require get_template_directory().'/inc/widgets.php';

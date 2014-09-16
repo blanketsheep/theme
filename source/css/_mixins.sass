@@ -17,6 +17,9 @@
 =text-style-color($invert: false)
   @if $invert
     color: invert( map-get($init,color) )
+  @else
+    a
+      color: map-get( $material-light-blue, 500 )
 
 =text-style-decoration($invert: false)
   @if $invert

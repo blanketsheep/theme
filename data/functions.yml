@@ -8,3 +8,4 @@ user_profile:
     is_writer: "_s_is_writer"
   meta_key:
     is_writer: "_s_is_writer"
+comment_template_func: "_s_list_comments"
