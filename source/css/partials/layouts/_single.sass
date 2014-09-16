@@ -129,65 +129,76 @@
       +rhythm-padding(1)
       +single-box-shadow(0,-1px,0)
     >.container
-    //
-      #comments
+    #comments
+      .comments_number
+        //+leader(1)
+        +gutters
+      >ol:not(.children)
+        +rhythm-margins(1)
+        >li.comment
+          +gutters
+      ol.children
+        +leader(1)
+        >li.comment
+          //background-color: rgba(0,0,0,.0125)
+      & ol li.comment:not(:first-child),
+      & ol.children
+        +single-box-shadow(0,-1px,0)
+      li.comment
         $avatar-height: 2
-        .comments_number
-          //+rhythm-margins(1)
-          +leader(1)
-        ol:not(.children)
-          +rhythm-margins(1)
-          >li.comment
-            +gutters
-        li.comment
-          +pad(1)
-          +rhythm-padding(1)
-          +adjust-font-size-to(.8rem)
+        +pad(1)
+        +rhythm-padding(1)
+        //
           &.odd
             background-color: rgba(0,0,0,.0125)
           &.even
             background-color: rgba(0,0,0,.025)
-          .comment-body
-            .comment-meta
-              +adjust-leading-to($avatar-height / 2)
-              position: relative
-              .comment-author
-                .avatar
-                  position: absolute
-                  top: 0
-                  left: 0
-                  bottom: 0
-                  right: auto
-                  display: block
-                  width: rhythm($avatar-height)
-                  height: rhythm($avatar-height)
-                .fn
-                  font-weight: bold
-                .says
-                  display: none
+        .comment-body
+          .comment-meta .comment-author,
+          .comment-meta .comment-metadata,
+          .comment-content,
+          .reply
+            +prefix($avatar-height)
+          .comment-meta,
+          .reply
+            +adjust-font-size-to(.8rem)
+          .comment-meta
+            position: relative
+            +adjust-leading-to($avatar-height / 2)
+            .comment-author,
             .comment-metadata
-              opacity: .75
-            .comment-meta,
-            .comment-content,
-            .reply
-              +prefix($avatar-height)
-            .reply
-              text-align: right
-              text-align: end
-            .comment-content
-              +text-style-color
-              +text-style-whitespace
-          .children
-            +padding-leader(1)
-        #respond
-          //+pad(1)
-          #commentform
-            +rhythm-margins(1)
-            .logged-in-as
-            .comment-form-comment
-            .form-allowed-tags
-            .form-submit
-              input[type="submit"]
+              //display: inline-block
+              display: block
+            .comment-author
+              position: static
+              .avatar
+                position: absolute
+                top: 0
+                left: 0
+                bottom: 0
+                right: auto
+                width: rhythm($avatar-height)
+                height: rhythm($avatar-height)
+              .fn
+                font-weight: bold
+              .says
+                display: none
+            .comment-metadata
+        .comment-content
+          +text-style-color
+          +text-style-whitespace
+          +padding-leader(1)
+        .reply
+          text:
+            align: right
+            align: end
+          .comment-reply-link
+      #respond
+        //+pad(1)
+        +gutters
+        #reply-title
+          +trailer(1)
+        #commentform
 
 =layout_single_breakpoint
   >.container
