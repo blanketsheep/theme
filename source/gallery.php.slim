@@ -1,0 +1,13 @@
+---
+layout: default
+wp_php_head:
+  template_name: "Gallery"
+---
+div#gallery
+  section#gallery_map
+    div.container
+      <?php while( have_posts() ): the_post(); ?>
+        div.gallery_post
+          <?php the_content(); ?>
+          div.layout_main_position
+      <?php endwhile; ?>
