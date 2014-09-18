@@ -1,0 +1,31 @@
+=widget_item
+  &
+    +rhythm_margins(1)
+  &:not(:first-child)
+    +leader(2)
+  &:not(:last-child)
+    +trailer(2)
+  >.container
+  .widget-title
+    $title-width: rhythm(2)
+    +box-shadow(0 1px 0 $default-box-shadow-color, 0 -1px 0 $default-box-shadow-color)
+    +adjust-font-size-to(1.125rem, 2)
+    +trailer(1)
+    position: relative
+    padding-left: $title-width
+    .icon
+      text-align: center
+      position: absolute
+      top: 0
+      left: 0
+      bottom: 0
+      right: auto
+      width: $title-width
+      height: $title-width
+      &:before
+        font-family: "dashicons"
+        content: "\f347"
+    .text
+
+=widget_item_breakpoint
+  

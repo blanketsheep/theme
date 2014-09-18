@@ -56,3 +56,51 @@ class _s_Writers_Icon_Widget extends WP_Widget {
   }
   
 }
+
+class _s_Recent_Posts_Widget extends WP_Widget {
+  
+  public function __construct() {
+    parent::__construct(
+      '_s_Recent_Posts_Widget',
+      <%= data.i18n.recent_posts_widget.name %>,
+      array(
+        'description' => <%= data.i18n.recent_posts_widget.description %>
+      )
+    );
+  }
+  
+  public function widget($args, $instance) {
+    echo $args['before_widget'];
+    
+    $title = apply_filters( 'widget_title', $instance['title'] );
+    if( !empty($title) )
+      echo $args['before_title'] . $title . $args['after_title'];
+    
+    $r = new WP_Query( apply_filters( 'widget_posts_args', array(
+      'posts_per_page'      => 10,
+      'no_found_rows'       => true,
+      'post_status'         => 'publish',
+      'ignore_sticky_posts' => true
+		) ) );
+    
+    
+    ?><ul><?php
+    while( $r->have_posts() ): $r->the_post(); ?>
+      <li>
+        <a class="container">
+          <span class="image">
+            
+          </span>
+          <span class="main">
+            
+          </span>
+        </a>
+      </li>
+    <?php endwhile;
+    ?></ul><?php
+    
+    
+    echo $args['after_widget'];
+  }
+  
+}

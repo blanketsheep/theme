@@ -120,6 +120,11 @@
         opacity: 0
       body[data-show-header] &
         opacity: 1
+      .widget_item
+        +widget_item
+        +gutters
+        &:first-child
+          margin-top: 0
   #single_footer
     +text-style-size
     //+text-style-color
