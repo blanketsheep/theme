@@ -3,6 +3,7 @@
   >.container
     +box-shadow
     +text-style-size
+    background-color: map-get($article-card, background-color)
   //+article-card-sizing
   .image
     +rhythm-padding(3,3)
@@ -14,11 +15,34 @@
       right: 0
       bottom: 0
       background-position: center center
+    &[no-image] .background
+      background-image: url(../img/photography/photography.png) !important
+    &:not([no-image]) .background
       +background-size(cover)
   .header, .main, .footer
     +pad(1)
   .header
+    //+leader(1)
+    +rhythm-margins(1)
+    h1
+      +adjust-font-size-to(1.25rem)
+  .main
+    +adjust-font-size-to(.95rem)
+  .footer
     +leader(1)
+    +adjust-font-size-to(.85rem)
+    .posted_on
+      display: block
+      text:
+        align: right
+        align: end
+      .published
+      .updated
+        display: none
+        &:before
+          content: ' ('
+        &:after
+          content: ') '
   >.container
     +padding-trailer(1)
 

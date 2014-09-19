@@ -148,5 +148,16 @@ $layout-single: (
   background-color: #fff
 );
 
+$article-card: (
+  background-color: #fff
+);
+
+$archives-widget: (
+  item: (
+    background-color: #fff,
+    color: map-get($init, color)
+  )
+);
+
 @import 'mixins';
 @import 'z_index';

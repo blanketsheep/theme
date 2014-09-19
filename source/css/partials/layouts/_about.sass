@@ -1,7 +1,6 @@
 =layout_about
+  margin-top: -( rhythm( map-get($header,height) ) )
   +layout_about_breakpoint
-  &
-    margin-top: -( rhythm( map-get($header,height) ) )
   #about_whats
     position: relative
     >.background
@@ -27,9 +26,6 @@
             +circle-image-sizing(8)
             margin: 0 auto
             +trailer(1)
-  #about_widgets
-    
-        
 
 =layout_about_breakpoint
   $container-span: (susy-get(columns) / 2)

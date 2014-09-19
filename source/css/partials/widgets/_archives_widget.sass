@@ -1,0 +1,31 @@
+@import 'partials/widgets/widget_item'
+
+=archives-widget
+  +archives-widget-breakpoint
+  ul li,
+  .tagcloud a
+    $map: map-get($archives-widget, item)
+    display: inline-block
+    +gutters
+    +box-shadow
+    +adjust-font-size-to(.9rem, 1)
+    height: rhythm(1)
+    padding: 0 .5rem
+    background-color: map-get($map, background-color)
+    color: map-get($map, color)
+
+=archives-widget-breakpoint
+
+.widget_archive,
+.widget_categories,
+.widget_tag_cloud
+  +archives-widget
+
+.widget_archive
+  +widget_item_icon("\f480")
+
+.widget_categories
+  +widget_item_icon("\f318")
+
+.widget_tag_cloud
+  +widget_item_icon("\f323")

@@ -5,7 +5,7 @@ layout: default
 div#author
   header#author_header
     div.top
-      <?php $src = get_avatar_url($author_id); ?>
+      <?php $src = get_avatar_url($author_id, 1920); ?>
       div.background style="background-image:url(<?php echo $src; ?>);"
         img src="<?php echo $src; ?>"
     div.bottom.layout_main_position

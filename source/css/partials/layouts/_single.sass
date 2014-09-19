@@ -23,17 +23,25 @@
     &,&>.container
       position: relative
     >.background
+      $blur: $default-box-shadow-blur
       position: absolute
-      top: 0
-      left: 0
-      right: 0
+      top: -($blur)
+      left: -($blur)
+      right: -($blur)
       bottom: -( rhythm(8) )
       background-position: center center
-      +background-size(cover)
+      +box-shadow(inset $default-box-shadow-h-offset $default-box-shadow-v-offset $blur opacify($default-box-shadow-color, .5) )
+      //+single-box-shadow(null,null,null,null,#000,inset)
       &
         +transition-property(opacity)
         +transition-duration
         +transition-timing-function
+      &[no-image]
+        background:
+          //image: url(../img/photography.transparentize/photography.png) !important
+          color: map-get($lemon-soda, nail-polished-leaves)
+      &:not([no-image])
+        +background-size(cover)
       body[data-show-header] &
         opacity: 0
       body:not([data-show-header]) &
@@ -102,9 +110,12 @@
           +responsive-ratio($ratio: "24:9")
           .background
             background-position: center center
-            +background-size(cover)
             img
               display: none
+          &[no-image] .background
+            background-image: url(../img/photography/photography.png) !important
+          &:not([no-image]) .background
+            +background-size(cover)
       #single_text
         +rhythm-padding(2)
         +text-style-size

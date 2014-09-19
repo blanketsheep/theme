@@ -9,3 +9,5 @@ gem 'susy', '2.1.3'
 gem 'breakpoint', '2.5.0'
 gem 'middleman-livereload', '3.3.4'
 gem 'middleman-slim', '0.1.2'
+
+gem 'compass-import-once', '1.0.5'

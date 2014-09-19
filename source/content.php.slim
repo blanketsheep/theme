@@ -1,12 +1,15 @@
 <article id=#{data.post.the_id} <?php post_class(); ?>>
   div.container
+    <?php $src = ''; ?>
     <?php if( has_post_thumbnail() ): ?>
-      <?php $src = wp_get_attachment_image_src( get_post_thumbnail_id() ) ?>
-      - src = '<?php echo esc_attr($src[0]); ?>'
-      - style = "background-image:url(" + src + ");"
-      div.image
-        a.background href="<?php echo get_permalink(); ?>" style=style
+      <?php $attachment = wp_get_attachment_image_src( get_post_thumbnail_id(), 384 ) ?>
+      <?php $src = esc_attr($attachment[0]); ?>
     <?php endif; ?>
+    - src = '<?php echo $src; ?>'
+    - style = "background-image:url(" + src + ");"
+    <div class="image" <?php if( empty($src) ) echo 'no-image'; ?>>
+      a.background href="<?php echo get_permalink(); ?>" style=style
+    </div>
     header.header
       div.container
         h1

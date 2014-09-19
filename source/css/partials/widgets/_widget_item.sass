@@ -1,4 +1,6 @@
 =widget_item
+  +widget_item_breakpoint
+  +widget_item_icon
   &
     +rhythm_margins(1)
   &:not(:first-child)
@@ -14,6 +16,7 @@
     position: relative
     padding-left: $title-width
     .icon
+      font-weight: normal
       text-align: center
       position: absolute
       top: 0
@@ -24,8 +27,18 @@
       height: $title-width
       &:before
         font-family: "dashicons"
-        content: "\f347"
     .text
 
 =widget_item_breakpoint
   
+=widget_item_icon($icon: false)
+  $important: true
+  @if $icon == false
+    $icon: "\f347"
+    $important: false
+  .widget-title .icon
+    &:before
+      @if $important == true
+        content: $icon !important
+      @else
+        content: $icon

@@ -6,7 +6,9 @@
 
 body
   color: map-get($init, color)
-  background-color: map-get($init, background-color)
+  background:
+    color: map-get($init, background-color)
+    image: url(../img/photography.transparentize/photography.png)
 
 #wrapper
   position: relative

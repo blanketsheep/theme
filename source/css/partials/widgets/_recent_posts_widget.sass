@@ -1,5 +1,6 @@
 =recent-posts-widget
   +recent-posts-widget-breakpoint
+  +widget_item_icon("\f119")
   ul
     >li
       $item-rhythm: 3
@@ -25,7 +26,6 @@
         height: $item-height
         .image
           display: block
-          background-color: #000
           width: 100%
           height: 100%
           img
@@ -38,6 +38,9 @@
             +adjust-font-size-to(1.75rem, $item-rhythm)
             +text-style-color(true)
             +text-style-decoration(true)
+            background:
+              //image: url(../img/photography/photography.png)
+              color: map-get($lemon-soda, nail-polished-leaves)
             &:before
               content: "\f498"
           &:not([no-thumbnail])

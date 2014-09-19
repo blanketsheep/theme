@@ -4,12 +4,34 @@
     background-color: map-get($footer,background-color)
     color: map-get($footer,color)
   .widgets
+    >.widget_item
+      +widget_item
+      margin:
+        top: 0 !important
+        bottom: 0 !important
+      >.container
+        +rhythm-padding(1)
+        +pad(1)
+      .widget-title
+        //margin-top: -( rhythm(1) )
+        //+adjust-font-size-to(1rem, 2)
+        +pull(1)
+        +box-shadow(0 1px 0 opacify( invert($default-box-shadow-color), .1 ) )
+        font-weight: bold
+        //
+          padding:
+            left: 0
+          .icon
+            display: none
   .copyright
     text-align: center
+    +rhythm-padding(1)
 
 =footer_breakpoint
   .container.widgets
     +container
     >.widget_item
+      >.container
+        //+rhythm-padding(1)
       $span: (susy-get(columns) / 4)
       +span($span)

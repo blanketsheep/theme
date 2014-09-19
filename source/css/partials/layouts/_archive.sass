@@ -13,9 +13,13 @@
     right: 0
     bottom: 0
     background-position: center center
-    +background-size(cover)
     img
       display: none
+    &[no-image]
+      background:
+        color: map-get($lemon-soda, nail-polished-leaves)
+    &:not([no-image])
+      +background-size(cover)
   .main
     position: relative
     >.container

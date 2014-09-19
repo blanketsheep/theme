@@ -28,7 +28,7 @@ layout: with_sidebar
         if( !function_exists('z_taxonomy_image_url') )
           return;
         //$image_url = '';
-        $image_url = 'http://blanketsheep.github.io/hachioji/images/photos/14454285439_cc03bbc5a6_o-hd-1920x1080.jpg';
+        //$image_url = 'http://blanketsheep.github.io/hachioji/images/photos/14454285439_cc03bbc5a6_o-hd-1920x1080.jpg';
         /*
         switch(true):
           case is_category():
@@ -56,8 +56,9 @@ layout: with_sidebar
     <?php if( !empty($local_vars['image_src']) ): ?>
       <?php $local_vars['style'] = sprintf('background-image:url(%s);',$local_vars['image_src']); ?>
     <?php endif; ?>
-    div.background style="<?php echo $local_vars['style']; ?>"
+    <div class="background" style="<?php echo $local_vars['style']; ?>" <?php if( empty($local_vars['image_src']) ) echo 'no-image'; ?> >
       img src="<?php echo $local_vars['image_src']; ?>"
+    </div>
     div.main
       div.container
         h1
