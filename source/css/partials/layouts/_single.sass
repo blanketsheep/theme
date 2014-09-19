@@ -132,11 +132,39 @@
     //+text-style-whitespace
     &
       +rhythm-padding(1)
-      +single-box-shadow(0,-1px,0)
+      //+single-box-shadow(0,-1px,0)
     >.container
+    #single_author
+      &
+        +trailer(2)
+      >.container
+        +box-shadow(0 1px 0 $default-box-shadow-color, 0 -1px 0 $default-box-shadow-color)
+        //background-color: rgba(0,0,0,.125)
+        position: relative
+      .left
+        position: relative
+        .circle_image
+          margin-left: auto
+          margin-right: auto
+        .text
+          text-align: center
+          position: absolute
+          top: auto
+          left: 0
+          right: 0
+          bottom: 0
+      .right
+        >.container
+          +rhythm-padding(1)
+        .name
+          +adjust-font-size-to(1.5rem)
+          font-weight: bold
+        .text
+          +leader(1)
+        
     #comments
       .comments_number
-        //+leader(1)
+        +leader(1)
         +gutters
       >ol:not(.children)
         +rhythm-margins(1)
@@ -206,6 +234,8 @@
         #commentform
 
 =layout_single_breakpoint
+  $main-right: map-get($layout-with-sidebar,right-span)
+  $main-left:  susy-get(columns) - $main-right
   >.container
     //+container
   #single_header
@@ -227,8 +257,8 @@
   #single_main
     >.container
       +container
-      $right: map-get($layout-with-sidebar,right-span)
-      $left:  susy-get(columns) - $right
+      $right: $main-right
+      $left:  $main-left
       #single_content
         +span($left nest)
       #single_sidebar
@@ -236,3 +266,25 @@
   #single_footer
     >.container
       //+container
+    #single_author
+      $max-columns: $main-left - (2 * 2)
+      $left: 8
+      $right: $max-columns - $left
+      >.container
+        +container($max-columns nest)
+      .left,
+      .right
+        height: rhythm($left)
+      .left
+        $vpad: 2
+        $inside: $left - ($vpad * 2)
+        +span($left nest)
+        .circle_image
+          +circle-image-sizing($inside)
+          +rhythm-margins($vpad)
+        .text
+          display: none
+          //height: rhythm($vpad)
+          +adjust-leading-to($vpad)
+      .right
+        +span($right nest)
