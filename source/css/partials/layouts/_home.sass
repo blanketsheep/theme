@@ -82,8 +82,8 @@
   +layout_home_body_breakpoint
   #home_articles
     >.container
-    .post
-      +article-card
+      +article-card-selector
+        +article-card
 
 =layout_home_body_breakpoint
   $columns: susy-get(columns) - map-get($layout-with-sidebar,right-span)
@@ -91,9 +91,12 @@
     >.container
       //+container
       +container($columns)
-    .post
-      $card-span: ( $columns / 3 )
+    $card-span: ( $columns / 3 )
+    +article-card-selector
       +article-card-sizing($card-span)
+    .paging_nav
+      +span($columns nest)
+      +paging_nav_sizing($columns)
 
 +keyframes(show_slide_item)
   0%

@@ -4,7 +4,9 @@
     +box-shadow
     +text-style-size
     background-color: map-get($article-card, background-color)
-  //+article-card-sizing
+    //
+      +article-card-selector
+        +article-card-sizing
   .image
     +rhythm-padding(3,3)
     position: relative
@@ -47,7 +49,10 @@
     +padding-trailer(1)
 
 =article-card-breakpoint
-  
+  .main>.container
+    height: rhythm(4)
+    overflow: hidden
+    +ellipsis(false)
 
 =article-card-sizing($span: 12, $hmargin: 0, $vmargin: 1)
   &
@@ -56,3 +61,8 @@
   >.container
     +rhythm-margins($vmargin)
     +squish($hmargin)
+
+=article-card-selector
+  .post,
+  .page
+    @content

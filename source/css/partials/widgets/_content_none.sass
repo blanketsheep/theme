@@ -1,0 +1,27 @@
+=content-none
+  +content-none-breakpoint
+  &
+    +text-style-size
+    +text-style-color
+    +text-style-decoration
+  &,
+  &>.container
+    +pad(1)
+    +rhythm-padding(1)
+  >.container
+    +box-shadow
+    background:
+      color: map-get($article-card, background-color)
+    +gutters
+  .header,
+  .main
+    &:not(:first-child)
+      +leader(1)
+    &:not(:last-child)
+      +trailer(1)
+
+=content-none-breakpoint
+  
+
+.content-none
+  +content-none

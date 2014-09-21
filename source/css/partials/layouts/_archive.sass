@@ -34,13 +34,13 @@
 =layout_archive_body
   +layout_archive_body_breakpoint
   >.container
-    .post
+    +article-card-selector
       +article-card
 
 =layout_archive_body_breakpoint
   $columns: susy-get(columns) - map-get($layout-with-sidebar,right-span)
   >.container
     +container($columns)
-    .post
-      $card-span: ( $columns / 3 )
+    $card-span: ( $columns / 3 )
+    +article-card-selector
       +article-card-sizing($card-span)

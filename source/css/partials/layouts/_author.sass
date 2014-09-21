@@ -39,7 +39,7 @@
       +text-style-whitespace
   #author_posts
     >.container
-      .post
+      +article-card-selector
         +article-card
 
 =layout_author_breakpoint
@@ -56,6 +56,6 @@
   #author_posts
     >.container
       +container
-      .post
-        $card-span: ( susy-get(columns) / 4 )
+      $card-span: ( susy-get(columns) / 4 )
+      +article-card-selector
         +article-card-sizing($card-span)

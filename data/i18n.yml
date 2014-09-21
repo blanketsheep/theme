@@ -12,3 +12,10 @@ user_profile:
 recent_posts_widget:
   name:        "__( '最近の投稿', '_s' )"
   description: "__( 'Recent Posts Widget by Blanket Sheep', '_s' )"
+content_none:
+  title:       "__( '記事が見つかりませんでした', '_s' )"
+  msg_user:    "__( 'よろしければ、検索をお試し下さい', '_s' )"
+  msg_admin:   "__( '管理画面の [投稿] から新規に記事を書いてください', '_s' )"
+paging_nav:
+  previous:    "__( '前のページ', '_s' )"
+  next:        "__( '次のページ', '_s' )"

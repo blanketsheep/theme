@@ -1,0 +1,46 @@
+=paging_nav
+  +paging_nav_breakpoint
+  &
+    display: none
+    +rhythm-padding(1)
+  >.container
+    >.item
+      &:before,
+      &:after
+        font-family: 'dashicons'
+      &:first-child
+        text:
+          align: left
+          align: start
+        &:before
+          content: "\f341"
+      &:last-child
+        text:
+          align: right
+          align: end
+        &:after
+          content: "\f345"
+      &:empty
+        visibility: hidden
+
+=paging_nav_breakpoint
+  
+
+=paging_nav_sizing($max: false)
+  @if $max == false
+    $max: susy-get(columns)
+  $pad: 2
+  $columns: $max - ($pad * 2)
+  display: block
+  >.container
+    +container($max)
+    >.item
+      $span: $columns / 2
+      +span($span)
+      &:first-child
+        +pre($pad)
+      &:last-child
+        +post($pad)
+
+.paging_nav
+  +paging_nav

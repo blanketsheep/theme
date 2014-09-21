@@ -20,6 +20,9 @@ layout: with_sidebar
           case ( is_day() || is_month() || is_year() ):
             get_the_date();
             break;
+          case is_search():
+            echo get_search_query();
+            break;
           default:
             echo 'FORMAT OR ARCHIVES DAYO';
         endswitch;

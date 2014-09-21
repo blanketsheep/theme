@@ -1,10 +1,13 @@
-section
-  header
-    = "KIJI IS NOT FOUND"
-  div
-    <?php if( current_user_can('publish_posts') ): ?>
-      div= "publisher: KAKOU KIJI"
-    <?php else: ?>
-      div= "user: SAGASOU KIJI"
+section.content-none
+  div.container
+    header.header
+      h2
+        == "<?php echo "+data.i18n.content_none.title+"; ?>"
+    div.main
+      div
+        /== "<?php echo "+data.i18n.content_none.msg+"; ?>"
+      <?php if( current_user_can('publish_posts') ): ?>
+        div== "<?php echo "+data.i18n.content_none.msg_admin+"; ?>"
+      <?php endif; ?>
+      div== "<?php echo "+data.i18n.content_none.msg_user+"; ?>"
       <?php get_search_form(); ?>
-    <?php endif; ?>

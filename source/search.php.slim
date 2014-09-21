@@ -1,16 +1,17 @@
 ---
-layout: default
 ---
-section#search
-  main.container
-    <?php if( have_posts() ): ?>
-      header
-        h1
-          <?php printf( '%s', get_search_query() ) ?>
-      <?php while( have_posts() ): the_post(); ?>
-        = partial 'partials/wp/template_part/content_search'
-      <?php endwhile; ?>
-      = partial 'partials/wp/paging_nav'
-    <?php else: ?>
-      = partial 'partials/wp/template_part/content_none'
-    <?php endif; ?>
+<?php include 'archive.php'; ?>
+/
+  section#search
+    main.container
+      <?php if( have_posts() ): ?>
+        header
+          h1
+            <?php printf( '%s', get_search_query() ) ?>
+        <?php while( have_posts() ): the_post(); ?>
+          = partial 'partials/wp/template_part/content_search'
+        <?php endwhile; ?>
+        = partial 'partials/wp/paging_nav'
+      <?php else: ?>
+        = partial 'partials/wp/template_part/content_none'
+      <?php endif; ?>
